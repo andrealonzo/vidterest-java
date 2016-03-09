@@ -18,7 +18,17 @@ Run the following command to build the project
 
 Run the following command to start the server 
 
-    $ mvn jetty:run
+    $ mvn jetty:running
+
+## Features
+
+| Features 
+|:---------         
+| Java           
+| Maven  
+| Jackson JSON parser
+| Jetty         
+| Servlets  
 
 ## License
 
