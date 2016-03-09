@@ -3,15 +3,15 @@
 
 	<servlet>
 		<servlet-name>TimeStamp</servlet-name>
-		<servlet-class>TimeStamp</servlet-class>
+		<servlet-class>TimeStampServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>TimeStamp</servlet-name>
-		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TimeStamp</servlet-name>
+		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
 </web-app>
