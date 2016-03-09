@@ -2,6 +2,7 @@
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 // Extend HttpServlet class
 public class TimeStampServlet extends HttpServlet {
@@ -28,8 +29,12 @@ public class TimeStampServlet extends HttpServlet {
         
         PrintWriter out = response.getWriter();
 
+        //needed to convert TimeStamp into JSON
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValueAsString(timeStamp);
         //output timestamp
-        out.println("{\"unix\":" + timeStamp.getUnixDate() + ",\"natural\":" + timeStamp.getNaturalLanguageDate() + "}");
+        
+        out.println(mapper.writeValueAsString(timeStamp));
         }
 
 

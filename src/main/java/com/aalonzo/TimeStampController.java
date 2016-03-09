@@ -1,4 +1,5 @@
 import org.apache.commons.lang3.*;
+import org.apache.commons.lang3.time.*;
 import java.util.*;
 import java.text.*;
 
@@ -35,10 +36,12 @@ public class TimeStampController {
         
             System.out.println("natural language timestamp entered");
             // input date is in natural language
-            DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-            try {
+            String [] datePatterns = {"MMMM d, yyyy", "MMMM d,yyyy"};
+    
+        //    DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 
-                date = format.parse(strDate);
+            try {
+                date = DateUtils.parseDate(strDate, datePatterns);
             }
             catch (ParseException ex) {
                 
@@ -52,11 +55,7 @@ public class TimeStampController {
         
         //convert the date to natual language
         naturalLanguageDate = new SimpleDateFormat("MMMM d, yyyy").format(date.getTime());
-    
-        
-        //TODO remove this and have this handled by a JSON parser
-        //add quotes to the natural language date
-        naturalLanguageDate = "\"" + naturalLanguageDate + "\"";
+
         
         return new TimeStamp(unixDate, naturalLanguageDate);
     }
