@@ -1,3 +1,5 @@
+package com.aalonzo;
+
 
 /**
  *  TimeStamp Model POJO

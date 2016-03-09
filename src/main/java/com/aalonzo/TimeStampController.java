@@ -1,7 +1,10 @@
+package com.aalonzo;
+
 import org.apache.commons.lang3.*;
 import org.apache.commons.lang3.time.*;
 import java.util.*;
 import java.text.*;
+import com.aalonzo.TimeStamp;
 
 
 /**
@@ -55,7 +58,7 @@ public class TimeStampController {
         //convert the date to unixTime
         unixDate = date.getTime() / 1000;
         
-        //convert the date to natual language
+        //convert the date to natural language
         naturalLanguageDate = new SimpleDateFormat("MMMM d, yyyy").format(date.getTime());
         
         return new TimeStamp(unixDate, naturalLanguageDate);

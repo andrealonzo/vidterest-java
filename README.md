@@ -1,10 +1,10 @@
-# Timestamp Microservice Java Implementation
+# Request Header Parser Microservice JAVA implementation
 
 ## Overview
 
-This is my implementation of the Timestamp Microservice for Free Code Camp.  This project is implemented in  Java.
+This is my JAVA implementation of the Request Header Parser Microservice for Free Code Camp.
 
-A running version of this program can be found at https://timestamp-java.herokuapp.com/
+A running version of this program can be found at https://requestheader-java.herokuapp.com/
 
 ## Build
 
