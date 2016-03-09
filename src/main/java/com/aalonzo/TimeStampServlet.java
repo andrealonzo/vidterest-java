@@ -23,7 +23,6 @@ public class TimeStampServlet extends HttpServlet {
         String strDate = java.net.URLDecoder.decode(encodedStrDate, "UTF-8");
         System.out.println(strDate);
         
-        
         //gets the timestamp
         TimeStamp timeStamp = timeStampController.getTimeStamp(strDate);
         
@@ -36,10 +35,7 @@ public class TimeStampServlet extends HttpServlet {
         
         out.println(mapper.writeValueAsString(timeStamp));
         }
-
-
-    
-
+        
     public void destroy() {
         // do nothing.
     }

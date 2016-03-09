@@ -3,6 +3,11 @@ import org.apache.commons.lang3.time.*;
 import java.util.*;
 import java.text.*;
 
+
+/**
+ *  Contains the logic for creating a TimeStamp 
+ * 
+ **/
 public class TimeStampController {
     public TimeStampController() {
 
@@ -38,13 +43,10 @@ public class TimeStampController {
             // input date is in natural language
             String [] datePatterns = {"MMMM d, yyyy", "MMMM d,yyyy"};
     
-        //    DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
-
             try {
                 date = DateUtils.parseDate(strDate, datePatterns);
             }
             catch (ParseException ex) {
-                
                 //input date is invalid
                 return new TimeStamp();
             }
@@ -55,7 +57,6 @@ public class TimeStampController {
         
         //convert the date to natual language
         naturalLanguageDate = new SimpleDateFormat("MMMM d, yyyy").format(date.getTime());
-
         
         return new TimeStamp(unixDate, naturalLanguageDate);
     }

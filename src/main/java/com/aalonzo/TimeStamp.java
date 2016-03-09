@@ -1,3 +1,9 @@
+
+/**
+ *  TimeStamp Model POJO
+ * 
+ **/
+ 
 public class TimeStamp{
     Long unixDate;
     String naturalLanguageDate;
