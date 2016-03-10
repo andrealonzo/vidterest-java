@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 // Extend HttpServlet class
-public class RequestHeaderServlet extends HttpServlet {
+public class UrlShortenerServlet extends HttpServlet {
 
     /**
 	 * 
@@ -23,16 +23,19 @@ public class RequestHeaderServlet extends HttpServlet {
         // Set response content type
         response.setContentType("application/json");
         
-        RequestHeaderController requestHeaderController = new RequestHeaderController();
-
-        RequestHeader requestHeader = requestHeaderController.getRequestHeader(request);
+        UrlShortenerController urlShortenerController = new UrlShortenerController();
+        
+        //grabs url to be shortened and remove leading slash
+        String url = request.getPathInfo().substring(1);
+        
+        ShortenedUrl shortenedUrl = urlShortenerController.getShortenedUrl(url);
         
         PrintWriter out = response.getWriter();
 
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValueAsString(requestHeader);
+        mapper.writeValueAsString(shortenedUrl);
         
-        out.println(mapper.writeValueAsString(requestHeader));
+        out.println(mapper.writeValueAsString(shortenedUrl));
         }
         
     public void destroy() {

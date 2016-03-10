@@ -2,10 +2,9 @@
 	http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.aalonzo</groupId>
-  <artifactId>RequestHeader</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>RequestHeader Webapp</name>
+  <name>Url Shortener</name>
   <url>http://maven.apache.org</url>
   <properties>
     <jdk.version>1.7</jdk.version>
@@ -17,7 +16,7 @@
   </properties>
 
   <dependencies>
-    <!-- For Java Objectto JSON conversion-->
+    <!-- For Java Object to JSON conversion-->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
@@ -50,12 +49,23 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.4</version>
     </dependency>
-    
+    <dependency>
+	<groupId>commons-validator</groupId>
+	<artifactId>commons-validator</artifactId>
+	<version>1.5.0</version>
+	</dependency>
+
+<dependency>
+  <groupId>org.postgresql</groupId>
+  <artifactId>postgresql</artifactId>
+  <version>9.4.1208</version>
+</dependency>
+
 
   </dependencies>
 
   <build>
-    <finalName>RequestHeader</finalName>
+    <finalName>UrlShortener</finalName>
 
     <plugins>
       <!-- Eclipse project -->
@@ -133,4 +143,5 @@
     </plugins>
 
   </build>
+  <artifactId>url-shortener</artifactId>
 </project>

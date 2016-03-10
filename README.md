@@ -1,10 +1,10 @@
-# Request Header Parser Microservice JAVA implementation
+# URL Shortener Microservice JAVA implementation
 
 ## Overview
 
-This is my JAVA implementation of the Request Header Parser Microservice for Free Code Camp.
+This is my JAVA implementation of the URL Shortener Microservice basejump for Free Code Camp.
 
-A running version of this program can be found at https://requestheader-java.herokuapp.com/
+A running version of this program can be found at https://urlshortener-java.herokuapp.com/
 
 ## Build
 
@@ -28,7 +28,8 @@ Run the following command to start the server
 | Maven  
 | Jackson JSON parser
 | Jetty         
-| Servlets  
+| Servlets 
+| Postgres DB 
 
 ## License
 
