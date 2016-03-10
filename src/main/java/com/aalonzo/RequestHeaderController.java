@@ -30,7 +30,7 @@ public class RequestHeaderController {
     private String getAccessLanguage(HttpServletRequest request) {
     	String acceptLanguage = request.getHeader("accept-language");
     	String language = null;
-		if(acceptLanguage != "")
+		if(acceptLanguage != null)
 		{
 			language = acceptLanguage.split(",")[0];
 		}
@@ -45,6 +45,8 @@ public class RequestHeaderController {
 	}
 	private String getSoftware(HttpServletRequest request){
     	String userAgent = request.getHeader("user-agent");
+    	if(userAgent == null)
+    		return null;
     	//regular expression pattern to extract the software from the userAgent
     	String softwareRe = "[(](.*?)[)]";
     	
