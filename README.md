@@ -18,7 +18,7 @@ Run the following command to build the project
 
 Run the following command to start the server 
 
-    $ mvn jetty:running
+    $ mvn jetty:run
 
 ## Features
 
