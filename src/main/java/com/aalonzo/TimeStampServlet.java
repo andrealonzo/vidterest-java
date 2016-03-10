@@ -9,12 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 // Extend HttpServlet class
 public class TimeStampServlet extends HttpServlet {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public void init() throws ServletException {
+    public void init() throws ServletException {
     }
 
     public void doGet(HttpServletRequest request,

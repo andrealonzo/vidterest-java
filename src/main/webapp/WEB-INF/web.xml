@@ -3,7 +3,7 @@
 
 	<servlet>
 		<servlet-name>TimeStamp</servlet-name>
-		<servlet-class>TimeStampServlet</servlet-class>
+		<servlet-class>com.aalonzo.TimeStampServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

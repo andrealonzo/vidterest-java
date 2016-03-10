@@ -48,7 +48,7 @@
   </dependencies>
 
   <build>
-    <finalName>CounterWebApp</finalName>
+    <finalName>TimeStamp</finalName>
 
     <plugins>
       <!-- Eclipse project -->
