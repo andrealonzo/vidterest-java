@@ -1,3 +1,5 @@
+package com.aalonzo;
+
 // Import required java libraries
 import java.io.*;
 import javax.servlet.*;
@@ -7,7 +9,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 // Extend HttpServlet class
 public class TimeStampServlet extends HttpServlet {
 
-    public void init() throws ServletException {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void init() throws ServletException {
     }
 
     public void doGet(HttpServletRequest request,
