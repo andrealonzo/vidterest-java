@@ -1,10 +1,10 @@
-# URL Shortener Microservice JAVA implementation
+# Image Search Abstraction Layer JAVA implementation
 
 ## Overview
 
-This is my JAVA implementation of the URL Shortener Microservice basejump for Free Code Camp.
+This is my JAVA implementation of the Image Search Abstraction Layer project for Free Code Camp.
 
-A running version of this program can be found at https://urlshortener-java.herokuapp.com/
+A running version of this program can be found at https://image-search-java.herokuapp.com/
 
 ## Build
 
@@ -38,6 +38,8 @@ Run the following command to start the server
 | Jetty         
 | Servlets 
 | Postgres DB 
+| Spring
+| Hibernate
 
 ## License
 
