@@ -78,5 +78,21 @@ public class UrlShortenerPersistence {
 		}
 		return null;
 	}
+
+	public String getOriginalUrl(int id) throws SQLException {
+		Statement stmt = c.createStatement();
+		String sql = "SELECT * FROM \"Url\" WHERE id = " + id;
+		ResultSet rs = stmt.executeQuery(sql);
+
+		if (rs.next()) {
+			// return found url
+			String value = rs.getString("value");
+			rs.close();
+			stmt.close();
+			c.close();
+			return value;
+		}
+		return null;
+	}
 	
 }

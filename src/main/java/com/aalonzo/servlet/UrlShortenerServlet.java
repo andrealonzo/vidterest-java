@@ -25,41 +25,43 @@ public class UrlShortenerServlet extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UrlShortenerController urlShortenerController = new UrlShortenerController();
-		doGet(request, response, urlShortenerController);
+		UrlShortenerController urlShortenerController;
+
+		try {
+			urlShortenerController = new UrlShortenerController();
+			doGet(request, response, urlShortenerController);
+		} catch (ClassNotFoundException | SQLException e) {
+			PrintWriter out = response.getWriter();
+			ObjectMapper mapper = new ObjectMapper();
+			out.println(mapper.writeValueAsString(new UrlError("Database error")));
+		} catch (MalformedURLException e) {
+
+			PrintWriter out = response.getWriter();
+			ObjectMapper mapper = new ObjectMapper();
+			out.println(mapper.writeValueAsString(new UrlError("URL invalid")));
+		}
+
 	}
-	public void doGet(HttpServletRequest request, HttpServletResponse response, UrlShortenerController urlShortenerController) throws ServletException, IOException {
-		// Set response content type
-		response.setContentType("application/json");
+
+	public void doGet(HttpServletRequest request, HttpServletResponse response,
+			UrlShortenerController urlShortenerController)
+			throws ServletException, IOException, ClassNotFoundException, SQLException {
 
 		// grabs url to be shortened and remove leading slash
 		String url = request.getPathInfo().substring(1);
 
 		PrintWriter out = response.getWriter();
 		ObjectMapper mapper = new ObjectMapper();
-		Object output = null;
-		try {
-			ShortenedUrl shortenedUrl = urlShortenerController.getShortenedUrl(url);
 
-			// prepend server path to short url
-			String absoluteShortUrl = request.getScheme() + "://" + request.getServerName() + ":"
-					+ request.getServerPort() + request.getContextPath() + "/s/" + shortenedUrl.getShortUrl();
-			shortenedUrl.setShortUrl(absoluteShortUrl);
-			output = shortenedUrl;
+		ShortenedUrl shortenedUrl = urlShortenerController.getShortenedUrl(url);
 
-		} catch (MalformedURLException e) {
-			output = new UrlError("URL invalid");
-		} catch (ClassNotFoundException e) {
-			output = new UrlError("Database class not found");
-		} catch (SQLException e) {
-			output = new UrlError("Error querying database");
-		}
+		// prepend server path to short url
+		String absoluteShortUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+				+ request.getContextPath() + "/s/" + shortenedUrl.getShortUrl();
+		shortenedUrl.setShortUrl(absoluteShortUrl);
 
-		mapper.writeValueAsString(output);
-		out.println(mapper.writeValueAsString(output));
+		out.println(mapper.writeValueAsString(shortenedUrl));
 	}
-	
-	
 
 	public void destroy() {
 		// do nothing.

@@ -3,15 +3,18 @@
 
 	<servlet>
 		<servlet-name>UrlShortener</servlet-name>
-		<servlet-class>com.aalonzo.UrlShortenerServlet</servlet-class>
+		<servlet-class>com.aalonzo.servlet.UrlShortenerServlet</servlet-class>
 	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
+	<servlet>
+		<servlet-name>LoadUrl</servlet-name>
+		<servlet-class>com.aalonzo.servlet.LoadUrlServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>UrlShortener</servlet-name>
 		<url-pattern>/new/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LoadUrl</servlet-name>
+		<url-pattern>/s/*</url-pattern>
 	</servlet-mapping>
 </web-app>
