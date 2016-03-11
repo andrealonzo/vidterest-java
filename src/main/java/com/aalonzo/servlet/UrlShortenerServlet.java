@@ -25,10 +25,12 @@ public class UrlShortenerServlet extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UrlShortenerController urlShortenerController = new UrlShortenerController();
+		doGet(request, response, urlShortenerController);
+	}
+	public void doGet(HttpServletRequest request, HttpServletResponse response, UrlShortenerController urlShortenerController) throws ServletException, IOException {
 		// Set response content type
 		response.setContentType("application/json");
-
-		UrlShortenerController urlShortenerController = new UrlShortenerController();
 
 		// grabs url to be shortened and remove leading slash
 		String url = request.getPathInfo().substring(1);
@@ -56,6 +58,8 @@ public class UrlShortenerServlet extends HttpServlet {
 		mapper.writeValueAsString(output);
 		out.println(mapper.writeValueAsString(output));
 	}
+	
+	
 
 	public void destroy() {
 		// do nothing.
