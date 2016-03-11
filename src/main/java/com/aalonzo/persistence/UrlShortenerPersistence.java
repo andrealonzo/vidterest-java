@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.aalonzo.ShortenedUrl;
+import com.aalonzo.model.ShortenedUrl;
 import com.aalonzo.util.BaseAlphaNumeric;
 
 public class UrlShortenerPersistence {
@@ -66,7 +66,7 @@ public class UrlShortenerPersistence {
 		Statement stmt = c.createStatement();
 		String sql = "INSERT INTO \"Url\" (value) VALUES ('" + url + "')";
 
-		int updatedRows = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+		stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
 		ResultSet generatedKeys = stmt.getGeneratedKeys();
 		if (generatedKeys.next()) {
 

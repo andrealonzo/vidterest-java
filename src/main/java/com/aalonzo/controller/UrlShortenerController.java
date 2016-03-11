@@ -1,10 +1,11 @@
-package com.aalonzo;
+package com.aalonzo.controller;
 
 import java.net.MalformedURLException;
 import java.sql.SQLException;
 
 import org.apache.commons.validator.routines.UrlValidator;
 
+import com.aalonzo.model.ShortenedUrl;
 import com.aalonzo.persistence.UrlShortenerPersistence;
 
 public class UrlShortenerController {

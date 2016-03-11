@@ -1,4 +1,4 @@
-package com.aalonzo;
+package com.aalonzo.servlet;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.aalonzo.servlet.UrlShortenerServlet;
 
 public class UrlShortenerServletTest {
 	HttpServletResponse response;

@@ -1,4 +1,4 @@
-package com.aalonzo;
+package com.aalonzo.model;
 
 public class UrlError {
 	private String error;

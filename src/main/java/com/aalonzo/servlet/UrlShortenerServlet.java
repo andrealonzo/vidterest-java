@@ -1,4 +1,4 @@
-package com.aalonzo;
+package com.aalonzo.servlet;
 
 // Import required java libraries
 import java.io.*;
@@ -7,6 +7,10 @@ import java.sql.SQLException;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import com.aalonzo.controller.UrlShortenerController;
+import com.aalonzo.model.ShortenedUrl;
+import com.aalonzo.model.UrlError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 // Extend HttpServlet class
