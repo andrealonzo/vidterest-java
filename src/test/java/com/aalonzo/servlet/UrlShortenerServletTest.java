@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -36,17 +37,17 @@ public class UrlShortenerServletTest {
 		when(response.getWriter()).thenReturn(writer);
 	}
 
-	@Test
-	public void testBadUrl() throws ServletException, IOException {
+	@Test(expected=MalformedURLException.class)
+	public void testBadUrl() throws ServletException, IOException, ClassNotFoundException, SQLException {
+		UrlShortenerController urlShortenerController = mock(UrlShortenerController.class);
 		String url = "thisisabadurl";
-		String expectedOutput = "{\"error\":\"URL invalid\"}\n";
-
 		when(request.getPathInfo()).thenReturn("/" + url);
 
-		// call servlet with mock objects
-		new UrlShortenerServlet().doGet(request, response);
+		when(urlShortenerController.getShortenedUrl(url)).thenCallRealMethod();
 
-		assertTrue(stringWriter.toString().equals(expectedOutput));
+		// call servlet with mock objects
+		new UrlShortenerServlet().doGet(request, response, urlShortenerController);
+
 	}
 
 	@Test
