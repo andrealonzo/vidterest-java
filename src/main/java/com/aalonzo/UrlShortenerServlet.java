@@ -2,6 +2,8 @@ package com.aalonzo;
 
 // Import required java libraries
 import java.io.*;
+import java.net.MalformedURLException;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,16 +29,20 @@ public class UrlShortenerServlet extends HttpServlet {
         
         //grabs url to be shortened and remove leading slash
         String url = request.getPathInfo().substring(1);
-        
-        ShortenedUrl shortenedUrl = urlShortenerController.getShortenedUrl(url);
-        
-        PrintWriter out = response.getWriter();
 
+        PrintWriter out = response.getWriter();
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValueAsString(shortenedUrl);
-        
-        out.println(mapper.writeValueAsString(shortenedUrl));
+        Object output = null;
+        try{
+             output = urlShortenerController.getShortenedUrl(url); 
+            
+        }catch(MalformedURLException e){
+        	 output = new UrlError("URL invalid");   
         }
+        
+        mapper.writeValueAsString(output); 
+        out.println(mapper.writeValueAsString(output));
+    }
         
     public void destroy() {
         // do nothing.

@@ -4,8 +4,8 @@ import org.apache.commons.validator.routines.UrlValidator;
 
 import com.aalonzo.ShortenedUrl;
 
+import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,11 +16,11 @@ public class UrlShortenerController {
     public UrlShortenerController() {
 
     }
-    public ShortenedUrl getShortenedUrl(String url)  {
+    public ShortenedUrl getShortenedUrl(String url) throws MalformedURLException  {
     	UrlValidator urlValidator = new UrlValidator();
-//    	if(!urlValidator.isValid(url)){
-//    		return new ShortenedUrl(url,null);  		
-//    	}
+    	if(!urlValidator.isValid(url)){
+    		throw new MalformedURLException();		
+    	}
        // URI dbUri = new URI(System.getenv("DATABASE_URL"));
     	String databaseUrl = "postgres://ijwpchemwfwwlu:Un8TiAMcebu25sss-zWJk9x2_K@ec2-54-83-57-25.compute-1.amazonaws.com:5432/dffme48imn1300?sslmode=disable";
     	URI dbUri=  null;
