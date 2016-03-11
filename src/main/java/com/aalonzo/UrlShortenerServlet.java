@@ -12,44 +12,48 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 // Extend HttpServlet class
 public class UrlShortenerServlet extends HttpServlet {
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	public void init() throws ServletException {
-    }
+	}
 
-    public void doGet(HttpServletRequest request,
-        HttpServletResponse response)
-    throws ServletException, IOException {
-        // Set response content type
-        response.setContentType("application/json");
-        
-        UrlShortenerController urlShortenerController = new UrlShortenerController();
-        
-        //grabs url to be shortened and remove leading slash
-        String url = request.getPathInfo().substring(1);
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Set response content type
+		response.setContentType("application/json");
 
-        PrintWriter out = response.getWriter();
-        ObjectMapper mapper = new ObjectMapper();
-        Object output = null;
-        try{
-             output = urlShortenerController.getShortenedUrl(url); 
-            
-        }catch(MalformedURLException e){
-        	 output = new UrlError("URL invalid");   
-        } catch (ClassNotFoundException e) {
-       	 	output = new UrlError("Database class not found");  
+		UrlShortenerController urlShortenerController = new UrlShortenerController();
+
+		// grabs url to be shortened and remove leading slash
+		String url = request.getPathInfo().substring(1);
+
+		PrintWriter out = response.getWriter();
+		ObjectMapper mapper = new ObjectMapper();
+		Object output = null;
+		try {
+			ShortenedUrl shortenedUrl = urlShortenerController.getShortenedUrl(url);
+
+			// prepend server path to short url
+			String absoluteShortUrl = request.getScheme() + "://" + request.getServerName() + ":"
+					+ request.getServerPort() + request.getContextPath() + "/s/" + shortenedUrl.getShortUrl();
+			shortenedUrl.setShortUrl(absoluteShortUrl);
+			output = shortenedUrl;
+
+		} catch (MalformedURLException e) {
+			output = new UrlError("URL invalid");
+		} catch (ClassNotFoundException e) {
+			output = new UrlError("Database class not found");
 		} catch (SQLException e) {
-       	 	output = new UrlError("Error querying database");  
+			output = new UrlError("Error querying database");
 		}
-        
-        mapper.writeValueAsString(output); 
-        out.println(mapper.writeValueAsString(output));
-    }
-        
-    public void destroy() {
-        // do nothing.
-    }
+
+		mapper.writeValueAsString(output);
+		out.println(mapper.writeValueAsString(output));
+	}
+
+	public void destroy() {
+		// do nothing.
+	}
 }
