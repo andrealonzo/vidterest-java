@@ -1,0 +1,16 @@
+-- Table: public."Url"
+
+-- DROP TABLE public."Url";
+
+CREATE TABLE public."Url"
+(
+  id integer NOT NULL DEFAULT nextval('"Url_id_seq"'::regclass),
+  value character varying
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public."Url"
+  OWNER TO postgres;
+
+  

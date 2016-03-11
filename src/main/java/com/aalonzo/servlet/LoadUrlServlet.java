@@ -49,11 +49,17 @@ public class LoadUrlServlet extends HttpServlet {
 		String shortUrl = request.getPathInfo().substring(1);
 
 		String originalUrl = urlShortenerController.getOriginalUrl(shortUrl);
+		
 		if (originalUrl == null) {
-			throw new SQLException();
+			PrintWriter out = response.getWriter();
+			ObjectMapper mapper = new ObjectMapper();
+			out.println(mapper.writeValueAsString(new UrlError("No short url found for given input"
+)));
+		}
+		else{
+			response.sendRedirect(originalUrl);
 		}
 
-		response.sendRedirect(originalUrl);
 	}
 
 }
