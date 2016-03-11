@@ -3,6 +3,7 @@ package com.aalonzo;
 // Import required java libraries
 import java.io.*;
 import java.net.MalformedURLException;
+import java.sql.SQLException;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -38,7 +39,11 @@ public class UrlShortenerServlet extends HttpServlet {
             
         }catch(MalformedURLException e){
         	 output = new UrlError("URL invalid");   
-        }
+        } catch (ClassNotFoundException e) {
+       	 	output = new UrlError("Database class not found");  
+		} catch (SQLException e) {
+       	 	output = new UrlError("Error querying database");  
+		}
         
         mapper.writeValueAsString(output); 
         out.println(mapper.writeValueAsString(output));
