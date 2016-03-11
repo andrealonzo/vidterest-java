@@ -16,6 +16,12 @@ Run the following command to build the project
 
 ## Run
 
+Set the DATABASE_URL environment variable.  The format should be similar to this
+
+```postgres://<db_username>:<db_password>@localhost:5432/testdb```
+
+Run the database creation script found in /scripts/db_creation.txt
+
 Run the following command to start the server 
 
     $ mvn jetty:run

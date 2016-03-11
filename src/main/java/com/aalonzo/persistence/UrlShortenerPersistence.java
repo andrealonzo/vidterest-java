@@ -26,7 +26,11 @@ public class UrlShortenerPersistence {
 		String password = null;
 		try {
 			// check for database url in environment
-			URI dbUri = new URI(System.getenv("DATABASE_URL"));
+			String dbUrlEnv = System.getenv("DATABASE_URL");
+			if(dbUrlEnv == null){
+				throw new SQLException("No Database url found");
+			}
+			URI dbUri = new URI(dbUrlEnv);
 			username = dbUri.getUserInfo().split(":")[0];
 			password = dbUri.getUserInfo().split(":")[1];
 			dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
