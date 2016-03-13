@@ -3,14 +3,13 @@ package com.aalonzo.api;
 public class SearchOptions {
 	private int top;
 	private int skip;
+	
+	/**
+	 * Default options
+	 */
 	public SearchOptions() {
 		this.top = 10;
 		this.skip = 0;
-	}
-	public SearchOptions(int top, int skip) {
-		super();
-		this.top = top;
-		this.skip = skip*10;
 	}
 	public int getTop() {
 		return top;

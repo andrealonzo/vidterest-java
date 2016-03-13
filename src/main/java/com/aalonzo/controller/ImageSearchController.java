@@ -18,10 +18,15 @@ public class ImageSearchController {
 	
 	
 	public List<SearchResult> search(String query, SearchOptions options) throws ClassNotFoundException, SQLException, IOException {
-		String accKey = "2SFuLUdLiSDnParcELfDCMn0uYtu8ErtdevllcDs5wk";
+		//gets the bing account key from the environment
+		String accKey = System.getenv("BING_ACCOUNT_KEY");
+		
+		//initialize Bing API image search helper
 		Bing bing = new Bing(accKey);
 			
-		List<SearchResult> searchResults = bing.images(query, options);;
+		//Query the Bing Image Search
+		List<SearchResult> searchResults = bing.images(query, options);
+		
 		return searchResults;
 
 	}

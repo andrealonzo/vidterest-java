@@ -9,6 +9,8 @@ import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+import org.apache.commons.lang3.math.NumberUtils;
+
 import com.aalonzo.api.SearchOptions;
 import com.aalonzo.controller.ImageSearchController;
 import com.aalonzo.model.SearchResult;
@@ -40,15 +42,28 @@ public class ImageSearchServlet extends HttpServlet {
 			// grabs url to be shortened and remove leading slash
 			String query = request.getPathInfo().substring(1);
 
-			PrintWriter out = response.getWriter();
-			ObjectMapper mapper = new ObjectMapper();
 
-			int offset = Integer.parseInt(request.getParameter("offset"));
+			//create default search options
 			SearchOptions searchOptions = new SearchOptions();
-			searchOptions.setSkip(offset);
 			
+			//gets the offset query string parameter
+			String offsetQueryStr = request.getParameter("offset");
+			
+			//checks to see if offset is a valid number
+			if(NumberUtils.isNumber(offsetQueryStr)){
+				
+				//if so, then convert it into a number and set the skip option
+				int offset = Integer.parseInt(request.getParameter("offset"));
+				searchOptions.setSkip(offset);
+			}
+			
+			//perform search
 			List<SearchResult> searchResults = imageSearchController.search(query, searchOptions);
 
+			//output as JSON
+			PrintWriter out = response.getWriter();
+			ObjectMapper mapper = new ObjectMapper();
+			
 			out.println(mapper.writeValueAsString(searchResults));
 		} catch (ClassNotFoundException | SQLException e) {
 			PrintWriter out = response.getWriter();
