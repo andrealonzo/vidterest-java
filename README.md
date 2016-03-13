@@ -16,9 +16,13 @@ Run the following command to build the project
 
 ## Run
 
-Set the DATABASE_URL environment variable.  The format should be similar to this 
+Create configuration file at
 
-    postgres://<db_username>:<db_password>@localhost:5432/testdb
+	/src/main/resources/config.properties
+	
+You will see a sample configuration template in 
+
+	/src/main/resources/config.properties.sample
 
 Run the database creation script found in 
 
@@ -38,8 +42,8 @@ Run the following command to start the server
 | Jetty         
 | Servlets 
 | Postgres DB 
-| Spring
 | Hibernate
+| Bing Azure Search API
 
 ## License
 

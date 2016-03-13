@@ -1,2 +1,2 @@
-database_url=<your database url>
-bing_account_key=<your bing account key>
+DATABASE_URL=<your database url>
+BING_ACCOUNT_KEY=<your bing account key>
