@@ -42,15 +42,15 @@
 		<div id="results">
 
 		</div>
-
+		<script>var serverUrl = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');</script>
 		<h1>	Example image search usage:</h1>
-		<div><code><script>document.write(window.location.protocol +"//"+  window.location.hostname)</script>/imagesearch/lolcats%20funny?offset=10</code></div>
+		<div><a href = "/imagesearch/lolcats%20funny?offset=10" target="blank"><code><script>document.write(serverUrl)</script>/imagesearch/lolcats%20funny?offset=10</code></a></div>
 		<h1>Example image search output:</h1>
 		<code>
 	[{"url":"http://data.whicdn.com/images/17561072/large.jpg","snippet":"Maybe I eat all the","thumbnail":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCO7BmkKUwgNi-4qSy3wwgbhQA0ZYY0Qs-U0wS5cX3koIGU2fRP6k_BEU","context":"http://weheartit.com/entry/group/6330716"},{"url":"http://funnypicturesimages.com/images/image/lolcats-funny-pictures-leroy.jpg","snippet":"funny animal picture - Buscar","thumbnail":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4q44VPxEUj9xcWvPXfuRnj9VMuTIvdrWQL3SsKpjnOrjA3uI7lsWy86w","context":"http://weheartit.com/entry/group/607840"}]
 		</code>
 		<h1>Example recent image search usage:</h1>
-		<code><script>document.write(window.location.protocol +"//"+  window.location.hostname)</script>/latest/imagesearch/</code>
+		<a href = "/latest/imagesearch/" target="blank"><code><script>document.write(serverUrl)</script>/latest/imagesearch/</code></a>
 		<h1>Example recent image search output:</h1>
 		<code>
 [{"term":"lolcats funny","when":"2016-01-07T16:38:41.323Z"},{"term":"lolcats funny","when":"2016-01-07T16:38:30.276Z"}]	</code>

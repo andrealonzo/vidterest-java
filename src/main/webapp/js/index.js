@@ -9,10 +9,10 @@ $(document).ready(function() {
 
 
 });
-
+var serverUrl = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
 function handleSearchFormSubmit(e) {
     e.preventDefault();
-    var url = window.location.protocol + "//" + window.location.hostname + "/imagesearch/" + $("#query").val() + "?offset=" + $("#offset").val();
+    var url = serverUrl + "/imagesearch/" + $("#query").val() + "?offset=" + $("#offset").val();
     $.ajax({
         method: "GET",
         url: url,
@@ -27,7 +27,7 @@ function handleSearchFormSubmit(e) {
 }
 
 function handleSearchesButtonClick() {
-    var url = window.location.protocol + "//" + window.location.hostname + "/latest/imagesearch/";
+    var url = serverUrl + "/latest/imagesearch/";
     $.ajax({
         method: "GET",
         url: url,
