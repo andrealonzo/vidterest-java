@@ -1,13 +1,13 @@
 package com.aalonzo.servlet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,6 @@ import org.junit.Test;
 import com.aalonzo.api.SearchOptions;
 import com.aalonzo.controller.ImageSearchController;
 import com.aalonzo.model.SearchResult;
-import com.aalonzo.servlet.ImageSearchServlet;
 
 public class ImageSearchServletTest {
 
@@ -53,14 +52,12 @@ public class ImageSearchServletTest {
 		List<SearchResult> searchResults = new ArrayList<SearchResult>();
 		searchResults.add(new SearchResult(url, context, snippet, thumbnail));
 		
-		SearchOptions searchOptions = new SearchOptions();
-		
 		String expectedOutput = "[{\"url\":\"" + url + "\",\"context\":\"" + context + "\",\"snippet\":\"" + snippet
 				+ "\",\"thumbnail\":\"" + thumbnail + "\"}]\n";
 
 		when(request.getPathInfo()).thenReturn("/" + query);
 		
-		when(imageSearchController.search(query, searchOptions)).thenReturn(searchResults);
+		when(imageSearchController.search(any(String.class), any(SearchOptions.class))).thenReturn(searchResults);
 
 		ImageSearchServlet servlet = new ImageSearchServlet();
 		servlet.imageSearchController = imageSearchController;
