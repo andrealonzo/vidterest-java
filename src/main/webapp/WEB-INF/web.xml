@@ -5,8 +5,19 @@
 		<servlet-name>ImageSearch</servlet-name>
 		<servlet-class>com.aalonzo.servlet.ImageSearchServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>RecentSearchServlet</display-name>
+		<servlet-name>RecentSearchServlet</servlet-name>
+		<servlet-class>com.aalonzo.servlet.RecentSearchServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ImageSearch</servlet-name>
 		<url-pattern>/imagesearch/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>RecentSearchServlet</servlet-name>
+		<url-pattern>/latest/imagesearch/</url-pattern>
 	</servlet-mapping>
 </web-app>

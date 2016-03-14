@@ -31,13 +31,16 @@ public class ImageSearchServlet extends HttpServlet {
 
 			try {
 				imageSearchController = new ImageSearchController();
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException | SQLException | IOException e) {
 				throw new ServletException("Could not connect to database");
 			}
 		
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//initialize JSON output writers 
+		PrintWriter out = response.getWriter();
+		ObjectMapper mapper = new ObjectMapper();
 		try {
 			// grabs url to be shortened and remove leading slash
 			String query = request.getPathInfo().substring(1);
@@ -61,18 +64,10 @@ public class ImageSearchServlet extends HttpServlet {
 			List<SearchResult> searchResults = imageSearchController.search(query, searchOptions);
 
 			//output as JSON
-			PrintWriter out = response.getWriter();
-			ObjectMapper mapper = new ObjectMapper();
-			
 			out.println(mapper.writeValueAsString(searchResults));
 		} catch (ClassNotFoundException | SQLException e) {
-			PrintWriter out = response.getWriter();
-			ObjectMapper mapper = new ObjectMapper();
 			out.println(mapper.writeValueAsString(new UrlError("Database error")));
 		} catch (MalformedURLException e) {
-
-			PrintWriter out = response.getWriter();
-			ObjectMapper mapper = new ObjectMapper();
 			out.println(mapper.writeValueAsString(new UrlError("URL invalid")));
 		}
 

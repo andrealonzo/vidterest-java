@@ -1,32 +1,42 @@
 package com.aalonzo.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Properties;
 
 import com.aalonzo.api.Bing;
 import com.aalonzo.api.SearchOptions;
+import com.aalonzo.model.SearchQuery;
 import com.aalonzo.model.SearchResult;
-import com.aalonzo.persistence.ImageSearchPersistence;
+import com.aalonzo.persistence.SearchHistoryPersistence;
+import com.aalonzo.util.PropertyHandler;
 
+/**
+ * Contains all the business logic for the app
+ * @author aalonzo
+ *
+ */
 public class ImageSearchController {
 	
-	ImageSearchPersistence persistence = null;
-	public ImageSearchController() throws ClassNotFoundException, SQLException{
-		//persistence = new ImageSearchPersistence();
+	SearchHistoryPersistence persistence = null;
+	public ImageSearchController() throws ClassNotFoundException, SQLException, IOException{
+		persistence = new SearchHistoryPersistence();
 	}
 	
 	
+	/**
+	 * Queries an image database and returns the results.  This also saves the query that was entered.
+	 * @param query
+	 * @param options
+	 * @return List of SearchResults
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public List<SearchResult> search(String query, SearchOptions options) throws ClassNotFoundException, SQLException, IOException {
 
 		//gets the bing account key from the properties file
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream input = classLoader.getResourceAsStream("config.properties");
-		Properties properties = new Properties();
-		properties.load(input);
-		String accKey = properties.getProperty("BING_ACCOUNT_KEY");
+		String accKey = PropertyHandler.getInstance().getValue("BING_ACCOUNT_KEY");
 		
 		if(accKey == null){
 			//gets the bing account key from the environment
@@ -39,8 +49,16 @@ public class ImageSearchController {
 		//Query the Bing Image Search
 		List<SearchResult> searchResults = bing.images(query, options);
 		
+		//save search
+		persistence.saveSearch(query);
+		
 		return searchResults;
 
+	}
+
+
+	public List<SearchQuery> getRecentSearches() throws SQLException {
+		return persistence.getRecentSearches();
 	}
 
 
