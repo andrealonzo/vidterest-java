@@ -56,7 +56,11 @@ public class ImageSearchController {
 
 	}
 
-
+	/**
+	 * Gets the most recent search queries
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<SearchQuery> getRecentSearches() throws SQLException {
 		return persistence.getRecentSearches();
 	}

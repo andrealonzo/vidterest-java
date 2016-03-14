@@ -1,5 +1,10 @@
 package com.aalonzo.api;
 
+/**
+ * Used with Bing Search
+ * @author aalonzo
+ *
+ */
 public class SearchOptions {
 	private int top;
 	private int skip;

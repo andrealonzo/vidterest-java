@@ -42,7 +42,6 @@ Run the following command to start the server
 | Jetty         
 | Servlets 
 | Postgres DB 
-| Hibernate
 | Bing Azure Search API
 
 ## License
