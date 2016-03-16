@@ -1,0 +1,70 @@
+{
+  "name": "vidterest",
+  "version": "1.0.0",
+  "description": "Pinterest clone for free code camp",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paycoguy/vidterest-java"
+  },
+  "homepage": "http://vidterest-java.heroku.com/",
+  "bugs": "https://github.com/paycoguy/vidterest-java/issues",
+  "keywords": [
+    "MongoDB",
+    "Mongoose",
+    "full stack",
+    "Express",
+    "Node",
+    "React",
+    "Redux",
+    "javascript"
+  ],
+  "scripts": {
+    "test": "mocha --watch --reporter spec --bail --check-leaks test/",
+    "test-w": "nodemon --exec 'mocha --reporter spec --bail --check-leaks test/'"
+  },
+  "author": "Andre Alonzo",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.14.2",
+    "dotenv": "^1.2.0",
+    "express": "^4.12.4",
+    "express-flash": "0.0.2",
+    "express-session": "^1.11.3",
+    "express-validator": "^2.18.0",
+    "flux": "^2.1.1",
+    "google-books-search": "^0.1.3",
+    "jquery": "^2.2.0",
+    "keymirror": "^0.1.1",
+    "masonry-layout": "^4.0.0",
+    "mongoose": "^4.1.0",
+    "object-assign": "^4.0.1",
+    "passport": "^0.3.0",
+    "passport-facebook": "^2.0.0",
+    "passport-github": "^1.0.0",
+    "passport-github2": "^0.1.9",
+    "passport-google-oauth": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "passport-twitter-email": "^1.0.3",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.3",
+    "react-masonry-component": "^4.0.0",
+    "react-router": "^2.0.0-rc5"
+  },
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "expect.js": "^0.3.1",
+    "jsx-loader": "^0.13.2",
+    "mocha": "^2.4.5",
+    "node-sass": "^3.4.2",
+    "nodemon": "^1.8.1",
+    "request": "^2.69.0",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "superagent": "^1.7.2",
+    "supertest": "^1.2.0",
+    "webpack": "^1.12.9"
+  }
+}

@@ -5,8 +5,8 @@
 	<groupId>com.aalonzo</groupId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>Image Search</name>
-	<url>http://maven.apache.org</url>
+	<name>Vidterest</name>
+	<url>https://vidterest-java.herokuapp.com</url>
 	<properties>
 		<jdk.version>1.7</jdk.version>
 		<spring.version>4.1.1.RELEASE</spring.version>
@@ -71,9 +71,17 @@
 	</dependencies>
 
 	<build>
-		<finalName>ImageSearch</finalName>
+		<finalName>Vidterest</finalName>
 
 		<plugins>
+
+			<!-- Build front end -->
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<!-- Use the latest released version: https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
+				<version>0.0.27</version>
+			</plugin>
 			<!-- Eclipse project -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -149,5 +157,5 @@
 		</plugins>
 
 	</build>
-	<artifactId>image-search</artifactId>
+	<artifactId>vidterest</artifactId>
 </project>

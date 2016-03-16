@@ -1,2 +1,2 @@
-DATABASE_URL=<your database url>
+DATABASE_URL=<database_protocol>://<username>@<password>:<port>/<database>
 BING_ACCOUNT_KEY=<your bing account key>
