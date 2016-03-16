@@ -4,3 +4,4 @@ bin/
 .project
 .settings/
 src/main/resources/config.properties
+node_modules/
