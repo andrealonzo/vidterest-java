@@ -6446,7 +6446,7 @@
 	        this.setState({
 	            message: null
 	        });
-	        VideoActions.remove({_id:video._id}, function(err, video) {
+	        VideoActions.remove({id:video.id}, function(err, video) {
 	            if (err) {
 	                this.setState({
 	                    message: {
@@ -6550,7 +6550,7 @@
 	            video.source == 'vine' ||
 	            video.source == 'instagram'){
 	            return(
-	            React.createElement(Video, {key: video._id, video: video}, 
+	            React.createElement(Video, {key: video.id, video: video}, 
 	                React.createElement("button", {className: "btn btn-danger", onClick: this.handleRemoveClick.bind(this,video)}, "Remove Video")
 	            )
 	            )
@@ -9590,7 +9590,7 @@
 	    },
 	    handleOnClick: function() {
 	        this.props.onRemoveClick({
-	            _id: this.props.video._id
+	            id: this.props.video.id
 	        });
 	    },
 	    render: function() {
@@ -9598,7 +9598,7 @@
 	        var video = this.props.video;
 	        if (video.source == 'youtube') {
 	            return (
-	                React.createElement("div", {key: video._id, className: "grid-item"}, 
+	                React.createElement("div", {key: video.id, className: "grid-item"}, 
 	            React.createElement("iframe", {src: "https://www.youtube.com/embed/" + video.videoId, frameBorder: "0", allowFullScreen: true}), 
 	            this.props.children
 	            )
@@ -9606,7 +9606,7 @@
 	        }
 	        else if (video.source == 'vine') {
 	            return (
-	                React.createElement("div", {key: video._id, className: "grid-item"}, 
+	                React.createElement("div", {key: video.id, className: "grid-item"}, 
 	                React.createElement("iframe", {src: "https://vine.co/v/"+video.videoId+"/embed/simple?audio=1", width: "300", height: "300", frameBorder: "0"}), React.createElement("script", {src: "https://platform.vine.co/static/scripts/embed.js"}), 
 	            
 	            this.props.children
@@ -9615,7 +9615,7 @@
 	        }
 	        else if (video.source == 'vimeo') {
 	            return (
-	                React.createElement("div", {key: video._id, className: "grid-item"}, 
+	                React.createElement("div", {key: video.id, className: "grid-item"}, 
 	            React.createElement("iframe", {src: "https://player.vimeo.com/video/"+video.videoId+"?title=0&byline=0&portrait=0", frameBorder: "0", webkitallowfullscreen: true, mozallowfullscreen: true, allowFullScreen: true}), 
 	            
 	            this.props.children
@@ -9624,7 +9624,7 @@
 	        }
 	        else if (video.source == 'instagram') {
 	            return (
-	                React.createElement("div", {key: video._id, className: "grid-item"}, 
+	                React.createElement("div", {key: video.id, className: "grid-item"}, 
 	                React.createElement("blockquote", {className: "instagram-media", "data-instgrm-version": "6"}, 
 	                    React.createElement("div", {className: "ig-wrapper"}, 
 	                        React.createElement("div", {className: "ig-image-wrapper"}, 
@@ -9746,7 +9746,7 @@
 	            video.source == 'vine' ||
 	            video.source == 'instagram'){
 	            return(
-	            React.createElement(Video, {key: video._id, video: video}
+	            React.createElement(Video, {key: video.id, video: video}
 	            )
 	            )
 	        } 
@@ -9856,9 +9856,9 @@
 	            video.source == 'vine' ||
 	            video.source == 'instagram'){
 	            return(
-	            React.createElement(Video, {key: video._id, video: video}, 
+	            React.createElement(Video, {key: video.id, video: video}, 
 	                video.addedBy?
-	                React.createElement("div", null, "Added By ", React.createElement(Link, {to: ("/user/" + video.addedBy._id)}, video.addedBy.displayName))
+	                React.createElement("div", null, "Added By ", React.createElement(Link, {to: ("/user/" + video.addedBy.id)}, video.addedBy.displayName))
 	                :null
 	                
 	            )

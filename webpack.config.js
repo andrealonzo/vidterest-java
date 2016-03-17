@@ -1,6 +1,6 @@
 module.exports = {
     entry: {
-        index:"./src/site/components/Index.jsx"
+        main:"./src/site/components/Index.jsx"
     },
     output: {
         path: __dirname,

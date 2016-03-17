@@ -10,7 +10,7 @@ var Video = React.createClass({
     },
     handleOnClick: function() {
         this.props.onRemoveClick({
-            _id: this.props.video._id
+            id: this.props.video.id
         });
     },
     render: function() {
@@ -18,7 +18,7 @@ var Video = React.createClass({
         var video = this.props.video;
         if (video.source == 'youtube') {
             return (
-                <div key = {video._id} className="grid-item">
+                <div key = {video.id} className="grid-item">
             <iframe src={"https://www.youtube.com/embed/" + video.videoId} frameBorder="0" allowFullScreen></iframe>
             {this.props.children}
             </div>
@@ -26,7 +26,7 @@ var Video = React.createClass({
         }
         else if (video.source == 'vine') {
             return (
-                <div key = {video._id}  className="grid-item">
+                <div key = {video.id}  className="grid-item">
                 <iframe src={"https://vine.co/v/"+video.videoId+"/embed/simple?audio=1"} width="300" height="300" frameBorder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>
             
             {this.props.children}
@@ -35,7 +35,7 @@ var Video = React.createClass({
         }
         else if (video.source == 'vimeo') {
             return (
-                <div  key = {video._id} className="grid-item">
+                <div  key = {video.id} className="grid-item">
             <iframe src={"https://player.vimeo.com/video/"+video.videoId+"?title=0&byline=0&portrait=0"}  frameBorder="0" webkitallowfullscreen mozallowfullscreen allowFullScreen></iframe>
             
             {this.props.children}
@@ -44,7 +44,7 @@ var Video = React.createClass({
         }
         else if (video.source == 'instagram') {
             return (
-                <div key = {video._id} className="grid-item">
+                <div key = {video.id} className="grid-item">
                 <blockquote className="instagram-media"  data-instgrm-version="6">
                     <div className = "ig-wrapper" >
                         <div className = 'ig-image-wrapper'>

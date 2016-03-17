@@ -82,9 +82,9 @@ var AllVideos = React.createClass({
             video.source == 'vine' ||
             video.source == 'instagram'){
             return(
-            <Video key={video._id} video={video}>
+            <Video key={video.id} video={video}>
                 {video.addedBy?
-                <div>Added By <Link to={`/user/${video.addedBy._id}`}  >{video.addedBy.displayName}</Link></div>
+                <div>Added By <Link to={`/user/${video.addedBy.id}`}  >{video.addedBy.displayName}</Link></div>
                 :null
                 }
             </Video>

@@ -88,7 +88,7 @@ var UserVideos = React.createClass({
             video.source == 'vine' ||
             video.source == 'instagram'){
             return(
-            <Video key={video._id} video={video}>
+            <Video key={video.id} video={video}>
             </Video>
             )
         } 

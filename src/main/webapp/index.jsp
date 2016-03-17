@@ -24,6 +24,6 @@
   <div id = "app">
 	</body>
 
-		<script type="text/javascript" src="js/indexBundle.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/mainBundle.js" charset="utf-8"></script>
 		
 </html>

@@ -1,23 +1,21 @@
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+<web-app id="WebApp_ID" version="2.4"
+    xmlns="http://java.sun.com/xml/ns/j2ee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+ 
+    <display-name>Spring MVC Application</display-name>
 
-	<servlet>
-		<servlet-name>ImageSearch</servlet-name>
-		<servlet-class>com.aalonzo.servlet.ImageSearchServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>RecentSearchServlet</display-name>
-		<servlet-name>RecentSearchServlet</servlet-name>
-		<servlet-class>com.aalonzo.servlet.RecentSearchServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ImageSearch</servlet-name>
-		<url-pattern>/imagesearch/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>RecentSearchServlet</servlet-name>
-		<url-pattern>/latest/imagesearch/</url-pattern>
-	</servlet-mapping>
+   <servlet>
+      <servlet-name>index</servlet-name>
+      <servlet-class>
+         org.springframework.web.servlet.DispatcherServlet
+      </servlet-class>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+
+ <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 </web-app>

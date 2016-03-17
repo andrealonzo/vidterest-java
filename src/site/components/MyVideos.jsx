@@ -45,7 +45,7 @@ var MyVideos = React.createClass({
         this.setState({
             message: null
         });
-        VideoActions.remove({_id:video._id}, function(err, video) {
+        VideoActions.remove({id:video.id}, function(err, video) {
             if (err) {
                 this.setState({
                     message: {
@@ -149,7 +149,7 @@ var MyVideos = React.createClass({
             video.source == 'vine' ||
             video.source == 'instagram'){
             return(
-            <Video key={video._id} video={video}>
+            <Video key={video.id} video={video}>
                 <button className="btn btn-danger" onClick={this.handleRemoveClick.bind(this,video)}>Remove Video</button>
             </Video>
             )
