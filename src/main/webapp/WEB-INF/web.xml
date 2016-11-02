@@ -1,21 +1,73 @@
-<web-app id="WebApp_ID" version="2.4"
-    xmlns="http://java.sun.com/xml/ns/j2ee" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
-    http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
- 
-    <display-name>Spring MVC Application</display-name>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
 
-   <servlet>
-      <servlet-name>index</servlet-name>
-      <servlet-class>
-         org.springframework.web.servlet.DispatcherServlet
-      </servlet-class>
-      <load-on-startup>1</load-on-startup>
-   </servlet>
 
- <servlet-mapping>
-    <servlet-name>index</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+
+    <servlet>
+        <servlet-name>IndexServlet</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <description>
+            Servlet to handle user requests</description>
+        <display-name>AuthUserServlet</display-name>
+        <servlet-name>AuthUserServlet</servlet-name>
+        <servlet-class>com.aalonzo.servlet.AuthUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>
+            Show videos of a certain user </description>
+        <display-name>UserServlet</display-name>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.aalonzo.servlet.UserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>
+        </description>
+        <display-name>VideoServlet</display-name>
+        <servlet-name>VideoServlet</servlet-name>
+        <servlet-class>com.aalonzo.servlet.VideoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>
+        </description>
+        <display-name>UserVideoServlet</display-name>
+        <servlet-name>UserVideoServlet</servlet-name>
+        <servlet-class>com.aalonzo.servlet.UserVideoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/MyVideos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>IndexServlet</servlet-name>
+        <url-pattern>/EditProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AuthUserServlet</servlet-name>
+        <url-pattern>/api/user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/api/user/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VideoServlet</servlet-name>
+        <url-pattern>/api/video/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserVideoServlet</servlet-name>
+        <url-pattern>/api/user/video/</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -1,16 +1,19 @@
--- Table: public."Url"
+-- Table: public."Video"
 
--- DROP TABLE public."Url";
+-- DROP TABLE public."Video";
 
-CREATE TABLE public."Url"
+CREATE TABLE public."Video"
 (
-  id integer NOT NULL DEFAULT nextval('"Url_id_seq"'::regclass),
-  value character varying
+  id integer NOT NULL DEFAULT nextval('"video_id_seq"'::regclass),
+  addedBy integer,
+  url character varying,
+  videoId character varying,
+  embedCode character varying
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE public."Url"
+ALTER TABLE public."Video"
   OWNER TO postgres;
 
   
